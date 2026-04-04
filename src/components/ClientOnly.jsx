@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
-export default function ClientOnly({ children }) {
+const ClientOnly = ({ children }) => {
   const [hasMounted, setHasMounted] = useState(false);
 
   useEffect(() => {
@@ -13,5 +13,7 @@ export default function ClientOnly({ children }) {
     return null; // Or a loading spinner
   }
 
-  return <>{children}</>;
-}
+  return children;
+};
+
+export default ClientOnly;

@@ -23,7 +23,7 @@ const profileSchema = z.object({
 });
 
 const ProfileForm = ({ model, allInterests, allProjects }) => {
-  const { register, handleSubmit, control, formState: { errors } } = useForm({
+  const { register, handleSubmit, control } = useForm({
     resolver: zodResolver(profileSchema),
     defaultValues: {
       ...model,
@@ -47,85 +47,85 @@ const ProfileForm = ({ model, allInterests, allProjects }) => {
   };
 
   return (
-      <Container id={PageIDs.homePage} className="py-5">
-        <h2 className="text-center mb-4">Your Profile</h2>
-        {formError && <Alert variant="danger">{formError}</Alert>}
-        <Form onSubmit={handleSubmit(onSubmit)}>
-          <Card>
-            <Card.Body>
-              <Row>
-                <Col md={6}>
-                  <Form.Group className="mb-3">
-                    <Form.Label>First Name</Form.Label>
-                    <Form.Control id={ComponentIDs.homeFormFirstName} {...register('firstName')} />
-                  </Form.Group>
-                </Col>
-                <Col md={6}>
-                  <Form.Group className="mb-3">
-                    <Form.Label>Last Name</Form.Label>
-                    <Form.Control id={ComponentIDs.homeFormLastName} {...register('lastName')} />
-                  </Form.Group>
-                </Col>
-              </Row>
-              <Form.Group className="mb-3">
-                <Form.Label>Bio</Form.Label>
-                <Form.Control as="textarea" rows={3} id={ComponentIDs.homeFormBio} {...register('bio')} />
-              </Form.Group>
-              <Row>
-                <Col md={6}>
-                  <Form.Group className="mb-3">
-                    <Form.Label>Title</Form.Label>
-                    <Form.Control {...register('title')} />
-                  </Form.Group>
-                </Col>
-                <Col md={6}>
-                  <Form.Group className="mb-3">
-                    <Form.Label>Picture URL</Form.Label>
-                    <Form.Control {...register('picture')} />
-                  </Form.Group>
-                </Col>
-              </Row>
-              <Row>
-                <Col md={6}>
-                  <Form.Group className="mb-3">
-                    <Form.Label>Interests</Form.Label>
-                    <Controller
-                      name="interests"
-                      control={control}
-                      render={({ field }) => (
-                        <Select
-                          isMulti
-                          options={interestOptions}
-                          value={interestOptions.filter(o => field.value?.includes(o.value))}
-                          onChange={opts => field.onChange(opts.map(o => o.value))}
-                        />
-                      )}
-                    />
-                  </Form.Group>
-                </Col>
-                <Col md={6}>
-                  <Form.Group className="mb-3">
-                    <Form.Label>Projects</Form.Label>
-                     <Controller
-                      name="projects"
-                      control={control}
-                      render={({ field }) => (
-                        <Select
-                          isMulti
-                          options={projectOptions}
-                          value={projectOptions.filter(o => field.value?.includes(o.value))}
-                          onChange={opts => field.onChange(opts.map(o => o.value))}
-                        />
-                      )}
-                    />
-                  </Form.Group>
-                </Col>
-              </Row>
-              <Button id={ComponentIDs.homeFormSubmit} type="submit" variant="primary">Update</Button>
-            </Card.Body>
-          </Card>
-        </Form>
-      </Container>
+    <Container id={PageIDs.homePage} className="py-5">
+      <h2 className="text-center mb-4">Your Profile</h2>
+      {formError && <Alert variant="danger">{formError}</Alert>}
+      <Form onSubmit={handleSubmit(onSubmit)}>
+        <Card>
+          <Card.Body>
+            <Row>
+              <Col md={6}>
+                <Form.Group className="mb-3">
+                  <Form.Label>First Name</Form.Label>
+                  <Form.Control id={ComponentIDs.homeFormFirstName} {...register('firstName')} />
+                </Form.Group>
+              </Col>
+              <Col md={6}>
+                <Form.Group className="mb-3">
+                  <Form.Label>Last Name</Form.Label>
+                  <Form.Control id={ComponentIDs.homeFormLastName} {...register('lastName')} />
+                </Form.Group>
+              </Col>
+            </Row>
+            <Form.Group className="mb-3">
+              <Form.Label>Bio</Form.Label>
+              <Form.Control as="textarea" rows={3} id={ComponentIDs.homeFormBio} {...register('bio')} />
+            </Form.Group>
+            <Row>
+              <Col md={6}>
+                <Form.Group className="mb-3">
+                  <Form.Label>Title</Form.Label>
+                  <Form.Control {...register('title')} />
+                </Form.Group>
+              </Col>
+              <Col md={6}>
+                <Form.Group className="mb-3">
+                  <Form.Label>Picture URL</Form.Label>
+                  <Form.Control {...register('picture')} />
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row>
+              <Col md={6}>
+                <Form.Group className="mb-3">
+                  <Form.Label>Interests</Form.Label>
+                  <Controller
+                    name="interests"
+                    control={control}
+                    render={({ field }) => (
+                      <Select
+                        isMulti
+                        options={interestOptions}
+                        value={interestOptions.filter(o => field.value?.includes(o.value))}
+                        onChange={opts => field.onChange(opts.map(o => o.value))}
+                      />
+                    )}
+                  />
+                </Form.Group>
+              </Col>
+              <Col md={6}>
+                <Form.Group className="mb-3">
+                  <Form.Label>Projects</Form.Label>
+                  <Controller
+                    name="projects"
+                    control={control}
+                    render={({ field }) => (
+                      <Select
+                        isMulti
+                        options={projectOptions}
+                        value={projectOptions.filter(o => field.value?.includes(o.value))}
+                        onChange={opts => field.onChange(opts.map(o => o.value))}
+                      />
+                    )}
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+            <Button id={ComponentIDs.homeFormSubmit} type="submit" variant="primary">Update</Button>
+          </Card.Body>
+        </Card>
+      </Form>
+    </Container>
   );
 };
 
@@ -137,8 +137,8 @@ ProfileForm.propTypes = {
     bio: PropTypes.string,
     title: PropTypes.string,
     picture: PropTypes.string,
-    interests: PropTypes.array,
-    projects: PropTypes.array,
+    interests: PropTypes.arrayOf(PropTypes.string),
+    projects: PropTypes.arrayOf(PropTypes.string),
   }).isRequired,
   allInterests: PropTypes.arrayOf(PropTypes.string).isRequired,
   allProjects: PropTypes.arrayOf(PropTypes.string).isRequired,

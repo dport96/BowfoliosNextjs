@@ -13,7 +13,7 @@ export async function POST(req) {
 
     // Create the User and an empty Profile
     await prisma.user.create({
-      data: { email, password, role: 'user' }
+      data: { email, password, role: 'user' },
     });
 
     await prisma.profile.create({
@@ -23,8 +23,8 @@ export async function POST(req) {
         lastName: '',
         bio: '',
         title: '',
-        picture: '/images/default-profile.png'
-      }
+        picture: '/images/default-profile.png',
+      },
     });
 
     return NextResponse.json({ message: 'User created' }, { status: 201 });

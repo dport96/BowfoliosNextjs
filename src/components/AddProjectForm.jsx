@@ -79,7 +79,7 @@ const AddProjectForm = ({ allInterests, allProfiles }) => {
                   </Form.Group>
                   <Row>
                     <Col xs={6}>
-                       <Form.Group className="mb-3">
+                      <Form.Group className="mb-3">
                         <Form.Label>Interests</Form.Label>
                         <Controller
                           name="interests"
@@ -95,8 +95,8 @@ const AddProjectForm = ({ allInterests, allProfiles }) => {
                         {errors.interests && <div className="text-danger small mt-1">{errors.interests.message}</div>}
                       </Form.Group>
                     </Col>
-                     <Col xs={6}>
-                       <Form.Group className="mb-3">
+                    <Col xs={6}>
+                      <Form.Group className="mb-3">
                         <Form.Label>Participants</Form.Label>
                         <Controller
                           name="participants"

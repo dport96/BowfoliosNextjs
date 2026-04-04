@@ -20,9 +20,7 @@ const FilterProfiles = ({ allInterests, initialProfiles }) => {
       setFilteredProfiles(initialProfiles);
     } else {
       setFilteredProfiles(
-        initialProfiles.filter(profile =>
-          selected.every(interest => profile.interests.includes(interest)),
-        ),
+        initialProfiles.filter(profile => selected.every(interest => profile.interests.includes(interest))),
       );
     }
   };
@@ -35,7 +33,7 @@ const FilterProfiles = ({ allInterests, initialProfiles }) => {
             <Col md={10}>
               <Form.Group>
                 <Form.Label>Filter by Interests</Form.Label>
-                 <Controller
+                <Controller
                   name="interests"
                   control={control}
                   render={({ field }) => (

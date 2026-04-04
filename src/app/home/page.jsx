@@ -13,7 +13,7 @@ const HomePage = async () => {
 
   const email = session.user.email;
   const profile = await prisma.profile.findUnique({ where: { email } });
-  
+
   const profileInterests = await prisma.profileInterest.findMany({
     where: { profileId: profile.id },
     include: { interest: true },
@@ -25,15 +25,15 @@ const HomePage = async () => {
     include: { project: true },
   });
   const projects = profileProjects.map(p => p.project.name);
-  
+
   const allInterests = (await prisma.interest.findMany()).map(i => i.name);
   const allProjects = (await prisma.project.findMany()).map(p => p.name);
 
   return (
-    <ProfileForm 
-      model={{ ...profile, interests, projects }} 
-      allInterests={allInterests} 
-      allProjects={allProjects} 
+    <ProfileForm
+      model={{ ...profile, interests, projects }}
+      allInterests={allInterests}
+      allProjects={allProjects}
     />
   );
 };

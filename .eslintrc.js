@@ -40,6 +40,7 @@ module.exports = {
     'no-confusing-arrow': ['error', { allowParens: true }],
     'no-plusplus': 'off',
     'no-underscore-dangle': 'off',
+    'react/jsx-props-no-spreading': 'off',
     'object-curly-newline': 'off',
     'object-property-newline': 'off',
     'object-shorthand': 'off',
