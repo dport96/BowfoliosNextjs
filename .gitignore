@@ -11,3 +11,4 @@ app/.deploy/settings.json
 /app/test-results
 .env
 /.next
+playwright-report/index.html
