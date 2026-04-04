@@ -49,7 +49,7 @@ jobs:
       - name: Seed database
         run: npm run seed
       - name: Verify database connection
-        run: npx prisma db execute --stdin <<< "SELECT COUNT(*) FROM \"User\";"
+        run: npx prisma db execute --schema prisma/schema.prisma --stdin <<< "SELECT COUNT(*) FROM \"User\";"
       - name: Run ESLint
         run: npm run lint
       - name: Build Next.js application
