@@ -1,5 +1,5 @@
 import { expect } from '@playwright/test';
-import { ComponentIDs } from '../lib/ids';
+import { ComponentIDs } from '../src/lib/ids';
 
 export async function login(page, email, password) {
   await page.goto('/signin');

@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { useSession } from 'next-auth/react';
+import { useSession, signOut } from 'next-auth/react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Container, Image, Nav, Navbar, NavDropdown } from 'react-bootstrap';
@@ -45,7 +45,7 @@ const NavBar = () => {
               </NavDropdown>
             ) : (
               <NavDropdown title={currentUser} id={ComponentIDs.currentUserDropdown}>
-                <NavDropdown.Item as={Link} id={ComponentIDs.currentUserDropdownSignOut} href="/api/auth/signout"><BoxArrowRight /> Sign Out</NavDropdown.Item>
+                <NavDropdown.Item id={ComponentIDs.currentUserDropdownSignOut} onClick={() => signOut({ callbackUrl: '/' })}><BoxArrowRight /> Sign Out</NavDropdown.Item>
               </NavDropdown>
             )}
           </Nav>

@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { ComponentIDs, PageIDs } from '../lib/ids';
+import { ComponentIDs, PageIDs } from '../src/lib/ids';
 import { login, logout } from './utils';
 
 const credentials = { username: 'peterleo@hawaii.edu', password: 'foo', firstName: 'Peter', lastName: 'Leong' };

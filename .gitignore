@@ -9,3 +9,5 @@ app/.deploy/settings.json
 /app/playwright-report
 /app/playwright-report
 /app/test-results
+.env
+/.next

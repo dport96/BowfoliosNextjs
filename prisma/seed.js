@@ -5,7 +5,7 @@ const path = require('path');
 const prisma = new PrismaClient();
 
 async function main() {
-  const dataPath = path.join(__dirname, '../private/data.json');
+  const dataPath = path.join(__dirname, '../src/private/data.json');
   const { profiles, projects } = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
 
   console.log('Clearing database...');
