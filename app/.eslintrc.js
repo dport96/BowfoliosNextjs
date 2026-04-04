@@ -6,11 +6,11 @@ module.exports = {
   },
   extends: [
     'plugin:react/recommended',
-    'plugin:meteor/recommended',
     'airbnb',
+    'next/core-web-vitals',
   ],
   globals: {
-    Assets: true, // Meteor disallows importing of Assets, see https://docs.meteor.com/api/assets.html
+    React: true,
   },
   parserOptions: {
     ecmaFeatures: {
@@ -21,7 +21,6 @@ module.exports = {
   },
   plugins: [
     'jsx',
-    'meteor',
     'react',
   ],
   rules: {
@@ -38,8 +37,6 @@ module.exports = {
     indent: ['error', 2],
     'linebreak-style': 'off',
     'max-len': ['error', 250],
-    'meteor/eventmap-params': [2, { eventParamName: 'event', templateInstanceParamName: 'instance' }],
-    'meteor/template-names': 'off',
     'no-confusing-arrow': ['error', { allowParens: true }],
     'no-plusplus': 'off',
     'no-underscore-dangle': 'off',
