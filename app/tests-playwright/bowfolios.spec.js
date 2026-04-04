@@ -91,7 +91,7 @@ test.describe('Bowfolios Next.js Tests', () => {
 
     // Select an interest using react-select
     await page.locator('input[id^="react-select-"]').first().click();
-    await page.getByText('Online Learning', { exact: true }).click();
+    await page.getByRole('option', { name: 'Online Learning' }).click();
 
     await page.click(`#${ComponentIDs.addProjectFormSubmit}`);
     await expect(page.locator('.swal-modal')).toBeVisible({ timeout: 15000 });
@@ -110,7 +110,7 @@ test.describe('Bowfolios Next.js Tests', () => {
 
     // Filter by Online Learning using react-select
     await page.locator('input[id^="react-select-"]').first().click();
-    await page.getByText('Online Learning', { exact: true }).click();
+    await page.getByRole('option', { name: 'Online Learning' }).click();
     await page.click(`#${ComponentIDs.filterFormSubmit}`);
 
     // Peter Leong should be visible
