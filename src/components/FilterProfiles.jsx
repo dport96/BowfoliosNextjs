@@ -59,7 +59,7 @@ const FilterProfiles = ({ allInterests, initialProfiles }) => {
           {filteredProfiles.map((profile, index) => (
             <Col key={index}>
               <Card className="h-100">
-                <Card.Header><Image src={profile.picture} width={50} alt="Profile" /></Card.Header>
+                <Card.Header>{profile.picture && <Image src={profile.picture} width={50} alt="Profile" />}</Card.Header>
                 <Card.Body>
                   <Card.Title>{profile.firstName} {profile.lastName}</Card.Title>
                   <Card.Subtitle className="mb-2 text-muted">{profile.title}</Card.Subtitle>
@@ -70,7 +70,7 @@ const FilterProfiles = ({ allInterests, initialProfiles }) => {
                 </Card.Body>
                 <Card.Footer>
                   <h5>Projects</h5>
-                  {profile.projects.map((pic, j) => <Image key={j} src={pic} width={50} className="me-1" alt="Project" />)}
+                  {profile.projects.map((pic, j) => pic && <Image key={j} src={pic} width={50} className="me-1" alt="Project" />)}
                 </Card.Footer>
               </Card>
             </Col>

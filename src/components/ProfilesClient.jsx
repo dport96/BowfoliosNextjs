@@ -18,7 +18,7 @@ const ProfilesClient = ({ profiles }) => {
           <Col key={index}>
             <Card className="h-100">
               <Card.Header>
-                <Image src={profile.picture} width={50} alt={profile.firstName} />
+                {profile.picture && <Image src={profile.picture} width={50} alt={profile.firstName} />}
                 <Card.Title>{profile.firstName} {profile.lastName}</Card.Title>
                 <Card.Subtitle><span className="text-muted">{profile.title}</span></Card.Subtitle>
               </Card.Header>
@@ -31,7 +31,7 @@ const ProfilesClient = ({ profiles }) => {
                 </div>
                 <h5>Projects</h5>
                 {profile.projects.map((p, i) => (
-                  <Image key={i} src={p.project.picture} width={50} className="me-1" alt="Project" />
+                  p.project.picture && <Image key={i} src={p.project.picture} width={50} className="me-1" alt="Project" />
                 ))}
               </Card.Body>
             </Card>

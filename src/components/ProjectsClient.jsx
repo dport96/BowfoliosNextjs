@@ -18,7 +18,7 @@ const ProjectsClient = ({ projects }) => {
           <Col key={index}>
             <Card className="h-100">
               <Card.Body>
-                <Card.Img src={project.picture} className="mb-2" />
+                {project.picture && <Card.Img src={project.picture} className="mb-2" />}
                 <Card.Title className="mt-0">{project.name}</Card.Title>
                 <Card.Text>{project.description}</Card.Text>
               </Card.Body>
@@ -29,7 +29,7 @@ const ProjectsClient = ({ projects }) => {
               </Card.Body>
               <Card.Footer>
                 {project.profiles.map((p, i) => (
-                  <Image key={i} roundedCircle src={p.profile.picture} width={50} className="me-1" alt="Participant" />
+                  p.profile.picture && <Image key={i} roundedCircle src={p.profile.picture} width={50} className="me-1" alt="Participant" />
                 ))}
               </Card.Footer>
             </Card>
