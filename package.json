@@ -48,6 +48,8 @@
     "postinstall": "prisma generate",
     "seed": "node prisma/seed.js",
     "test": "playwright test",
+    "playwright": "playwright test",
+    "playwright:report": "playwright show-report",
     "test-all": "npm run lint && npm run unimported && npm run test",
     "unimported": "npx unimported"
   }
